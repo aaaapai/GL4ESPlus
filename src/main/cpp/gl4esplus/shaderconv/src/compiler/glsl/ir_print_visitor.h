@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /*
- * Copyright Â© 2010 Intel Corporation
+ * Copyright © 2010 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -28,7 +28,7 @@
 #include "ir.h"
 #include "ir_visitor.h"
 
-#include "../../mesa/program/symbol_table.h"
+#include "program/symbol_table.h"
 
 /**
  * Abstract base class of visitors of IR instruction trees
@@ -36,7 +36,9 @@
 class ir_print_visitor : public ir_visitor {
 public:
    ir_print_visitor(FILE *f);
+   ir_print_visitor(const ir_print_visitor &) = delete;
    virtual ~ir_print_visitor();
+   ir_print_visitor & operator=(const ir_print_visitor &) = delete;
 
    void indent(void);
 

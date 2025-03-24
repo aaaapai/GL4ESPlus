@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2013 Intel Corporation
+ * Copyright © 2013 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -34,7 +34,7 @@
  */
 #include "ir.h"
 #include "ir_optimization.h"
-#include "../../util/macros.h"
+#include "main/macros.h"
 
 namespace {
 class matrix_flipper : public ir_hierarchical_visitor {
@@ -70,8 +70,8 @@ ir_visitor_status
 matrix_flipper::visit_enter(ir_expression *ir)
 {
    if (ir->operation != ir_binop_mul ||
-       !ir->operands[0]->type->is_matrix() ||
-       !ir->operands[1]->type->is_vector())
+       !glsl_type_is_matrix(ir->operands[0]->type) ||
+       !glsl_type_is_vector(ir->operands[1]->type))
       return visit_continue;
 
    ir_variable *mat_var = ir->operands[0]->variable_referenced();

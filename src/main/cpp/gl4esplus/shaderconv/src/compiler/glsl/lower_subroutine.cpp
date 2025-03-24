@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2015 Red Hat
+ * Copyright © 2015 Red Hat
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -27,7 +27,7 @@
  * lowers subroutines to an if ladder.
  */
 
-#include "../glsl_types.h"
+#include "compiler/glsl_types.h"
 #include "glsl_parser_extras.h"
 #include "ir.h"
 #include "ir_builder.h"
@@ -93,7 +93,7 @@ lower_subroutine_visitor::visit_leave(ir_call *ir)
       bool is_compat = false;
 
       for (int i = 0; i < fn->num_subroutine_types; i++) {
-         if (ir->sub_var->type->without_array() == fn->subroutine_types[i]) {
+         if (glsl_without_array(ir->sub_var->type) == fn->subroutine_types[i]) {
             is_compat = true;
             break;
          }

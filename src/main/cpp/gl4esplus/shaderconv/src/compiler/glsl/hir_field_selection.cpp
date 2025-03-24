@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2010 Intel Corporation
+ * Copyright © 2010 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -24,7 +24,7 @@
 #include "ir.h"
 #include "glsl_parser_extras.h"
 #include "ast.h"
-#include "../glsl_types.h"
+#include "compiler/glsl_types.h"
 
 ir_rvalue *
 _mesa_ast_field_selection_to_hir(const ast_expression *expr,
@@ -44,19 +44,19 @@ _mesa_ast_field_selection_to_hir(const ast_expression *expr,
     * being applied.
     */
    YYLTYPE loc = expr->get_location();
-   if (op->type->is_error()) {
+   if (glsl_type_is_error(op->type)) {
       /* silently propagate the error */
-   } else if (op->type->is_struct() || op->type->is_interface()) {
+   } else if (glsl_type_is_struct(op->type) || glsl_type_is_interface(op->type)) {
       result = new(ctx) ir_dereference_record(op,
 					      expr->primary_expression.identifier);
 
-      if (result->type->is_error()) {
+      if (glsl_type_is_error(result->type)) {
 	 _mesa_glsl_error(& loc, state, "cannot access field `%s' of "
 			  "structure",
 			  expr->primary_expression.identifier);
       }
-   } else if (op->type->is_vector() ||
-              (state->has_420pack() && op->type->is_scalar())) {
+   } else if (glsl_type_is_vector(op->type) ||
+              (state->has_420pack() && glsl_type_is_scalar(op->type))) {
       ir_swizzle *swiz = ir_swizzle::create(op,
 					    expr->primary_expression.identifier,
 					    op->type->vector_elements);

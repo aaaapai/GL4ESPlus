@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2010 Intel Corporation
+ * Copyright © 2010 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -34,7 +34,7 @@
 
 #include "ir.h"
 #include "ir_visitor.h"
-#include "../glsl_types.h"
+#include "compiler/glsl_types.h"
 
 struct assignment_entry {
    exec_node link;
@@ -62,12 +62,17 @@ public:
    unsigned assigned_count;
 
    bool declaration; /* If the variable had a decl in the instruction stream */
+
+   /** Is the variable a global */
+   bool is_global;
 };
 
 class ir_variable_refcount_visitor : public ir_hierarchical_visitor {
 public:
    ir_variable_refcount_visitor(void);
+   ir_variable_refcount_visitor(const ir_variable_refcount_visitor &) = delete;
    ~ir_variable_refcount_visitor(void);
+   ir_variable_refcount_visitor & operator=(const ir_variable_refcount_visitor &) = delete;
 
    virtual ir_visitor_status visit(ir_variable *);
    virtual ir_visitor_status visit(ir_dereference_variable *);
@@ -86,6 +91,8 @@ public:
    struct hash_table *ht;
 
    void *mem_ctx;
+
+   bool global;
 };
 
 #endif /* GLSL_IR_VARIABLE_REFCOUNT_H */

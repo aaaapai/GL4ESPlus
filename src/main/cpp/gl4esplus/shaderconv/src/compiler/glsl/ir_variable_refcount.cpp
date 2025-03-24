@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2010 Intel Corporation
+ * Copyright © 2010 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -32,13 +32,14 @@
 #include "ir.h"
 #include "ir_visitor.h"
 #include "ir_variable_refcount.h"
-#include "../glsl_types.h"
-#include "../../util/hash_table.h"
+#include "compiler/glsl_types.h"
+#include "util/hash_table.h"
 
 ir_variable_refcount_visitor::ir_variable_refcount_visitor()
 {
    this->mem_ctx = ralloc_context(NULL);
    this->ht = _mesa_pointer_hash_table_create(NULL);
+   this->global = true;
 }
 
 static void
@@ -94,8 +95,10 @@ ir_visitor_status
 ir_variable_refcount_visitor::visit(ir_variable *ir)
 {
    ir_variable_refcount_entry *entry = this->get_variable_entry(ir);
-   if (entry)
+   if (entry) {
       entry->declaration = true;
+      entry->is_global = this->global;
+   }
 
    return visit_continue;
 }
@@ -117,10 +120,14 @@ ir_variable_refcount_visitor::visit(ir_dereference_variable *ir)
 ir_visitor_status
 ir_variable_refcount_visitor::visit_enter(ir_function_signature *ir)
 {
+   global = false;
+
    /* We don't want to descend into the function parameters and
     * dead-code eliminate them, so just accept the body here.
     */
    visit_list_elements(this, &ir->body);
+
+   global = true;
    return visit_continue_with_parent;
 }
 
