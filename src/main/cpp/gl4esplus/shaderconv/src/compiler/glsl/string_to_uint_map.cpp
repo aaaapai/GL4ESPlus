@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2011 Intel Corporation
+ * Copyright © 2011 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -39,4 +39,22 @@ extern "C" void
 string_to_uint_map_dtor(struct string_to_uint_map *map)
 {
    delete map;
+}
+
+extern "C" void
+string_to_uint_map_put(struct string_to_uint_map *map,
+                       unsigned value, const char *key)
+{
+   map->put(value, key);
+}
+
+extern "C" bool
+string_to_uint_map_get(struct string_to_uint_map *map,
+                       unsigned *value, const char *key)
+{
+   unsigned val;
+   bool r = map->get(val, key);
+   if (r)
+      *value = val;
+   return r;
 }

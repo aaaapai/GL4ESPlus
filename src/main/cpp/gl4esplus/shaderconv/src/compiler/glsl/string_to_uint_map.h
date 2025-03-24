@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2008 Intel Corporation
+ * Copyright © 2008 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -27,7 +27,7 @@
 
 #include <string.h>
 #include <limits.h>
-#include "../../util/hash_table.h"
+#include "util/hash_table.h"
 
 struct string_to_uint_map;
 
@@ -41,6 +41,13 @@ string_to_uint_map_ctor();
 void
 string_to_uint_map_dtor(struct string_to_uint_map *);
 
+void
+string_to_uint_map_put(struct string_to_uint_map *map,
+                       unsigned value, const char *key);
+
+bool
+string_to_uint_map_get(struct string_to_uint_map *map,
+                       unsigned *value, const char *key);
 
 #ifdef __cplusplus
 }
@@ -61,7 +68,7 @@ struct string_to_uint_map {
 public:
    string_to_uint_map()
    {
-      this->ht = _mesa_hash_table_create(NULL, _mesa_key_hash_string,
+      this->ht = _mesa_hash_table_create(NULL, _mesa_hash_string,
                                          _mesa_key_string_equal);
    }
 
@@ -70,6 +77,9 @@ public:
       hash_table_call_foreach(this->ht, delete_key, NULL);
       _mesa_hash_table_destroy(this->ht, NULL);
    }
+
+   string_to_uint_map(const string_to_uint_map &) = delete;
+   string_to_uint_map & operator=(const string_to_uint_map &) = delete;
 
    /**
     * Remove all mappings from this map.

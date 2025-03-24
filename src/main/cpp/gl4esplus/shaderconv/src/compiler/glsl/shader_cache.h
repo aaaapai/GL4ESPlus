@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Red Hat
+ * Copyright © 2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -16,39 +16,25 @@
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
  * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef GLSL_STANDALONE_H
-#define GLSL_STANDALONE_H
+#ifndef SHADER_CACHE_H
+#define SHADER_CACHE_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "util/disk_cache.h"
 
-struct standalone_options {
-   int glsl_version;
-   int dump_ast;
-   int dump_hir;
-   int dump_lir;
-   int do_link;
-   int just_log;
-   int lower_precision;
-};
-
+struct gl_context;
 struct gl_shader_program;
 
-struct gl_shader_program * standalone_compile_shader(
-      const struct standalone_options *options,
-      unsigned num_files, char* const* files,
-      struct gl_context *ctx);
+void
+shader_cache_write_program_metadata(struct gl_context *ctx,
+                                    struct gl_shader_program *prog);
 
-void standalone_compiler_cleanup(struct gl_shader_program *prog);
+bool
+shader_cache_read_program_metadata(struct gl_context *ctx,
+                                   struct gl_shader_program *prog);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* GLSL_STANDALONE_H */
+#endif /* SHADER_CACHE_H */
