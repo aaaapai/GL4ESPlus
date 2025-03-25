@@ -49,7 +49,6 @@ LOCAL_PATH := $(call my-dir)
 #include $(BUILD_SHARED_LIBRARY)
 ##endif
 
-ifeq ($(TARGET_ARCH_ABI), arm64-v8a)
 include $(CLEAR_VARS)
 LOCAL_MODULE            := shaderconv
 LOCAL_SRC_FILES         := gl4esplus/shaderconv/src/shaderconv/shaderconv.c \
