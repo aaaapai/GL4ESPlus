@@ -193,8 +193,7 @@ LOCAL_C_INCLUDES        := $(LOCAL_PATH)/gl4esplus/shaderconv/include \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/auxiliary \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/include
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
-LOCAL_LDLIBS            := -ldl -lc
-LOCAL_CPP_FEATURES      := exceptions
+LOCAL_LDLIBS            := -ldl
 LOCAL_CPPFLAGS           = -std=c++11
 LOCAL_CFLAGS            += -std=c11
 LOCAL_CFLAGS            += -D_LIB
@@ -206,7 +205,6 @@ LOCAL_CFLAGS            += -D__STDC_FORMAT_MACROS
 LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
 LOCAL_CFLAGS            += -DUNIX
-LOCAL_CFLAGS            += -fexceptions
 include $(BUILD_SHARED_LIBRARY)
 
 #include $(CLEAR_VARS)
