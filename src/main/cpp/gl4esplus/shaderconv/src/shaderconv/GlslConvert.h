@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <string>
+#include <cstring>
 #include <map>
 #include <functional>
 #include "../compiler/shader_enums.h"
