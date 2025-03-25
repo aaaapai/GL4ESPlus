@@ -49,7 +49,6 @@ LOCAL_PATH := $(call my-dir)
 #include $(BUILD_SHARED_LIBRARY)
 ##endif
 
-ifeq ($(TARGET_ARCH_ABI), arm64-v8a)
 include $(CLEAR_VARS)
 LOCAL_MODULE            := shaderconv
 LOCAL_SRC_FILES         := gl4esplus/shaderconv/src/shaderconv/shaderconv.c \
@@ -208,7 +207,6 @@ LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
 LOCAL_CFLAGS            += -DUNIX
 include $(BUILD_SHARED_LIBRARY)
-#endif
 
 #include $(CLEAR_VARS)
 #LOCAL_MODULE            := awt_headless
