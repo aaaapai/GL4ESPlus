@@ -5,6 +5,7 @@
 #include "../util/macros.h"
 #include "../util/hash_table.h"
 #include "../util/u_string.h"
+#include <stdexcept>
 
 void IR_TO_IR::print_type(sbuffer& str, const glsl_type *t)
 {
