@@ -1,5 +1,5 @@
 /*
- * Copyright Â© 2017 Thomas Helland
+ * Copyright © 2017 Thomas Helland
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -95,7 +95,7 @@ _mesa_string_buffer_vprintf(struct _mesa_string_buffer *str,
 
 bool
 _mesa_string_buffer_printf(struct _mesa_string_buffer *str,
-                            const char *format, ...);
+                            const char *format, ...) PRINTFLIKE(2, 3);
 
 #ifdef __cplusplus
 } /* extern "C" */
