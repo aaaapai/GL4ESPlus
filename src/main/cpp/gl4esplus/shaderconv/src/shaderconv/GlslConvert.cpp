@@ -19,6 +19,7 @@
 #include "GlslConvert.h"
 
 #include <cstdio>
+#include <string>
 #include <cstring>
 
 #include "../compiler/glsl/ast.h"
