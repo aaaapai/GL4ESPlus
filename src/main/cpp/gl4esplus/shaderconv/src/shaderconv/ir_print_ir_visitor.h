@@ -25,7 +25,7 @@
 #ifndef IR_PRINT_IR_VISITOR_H
 #define IR_PRINT_IR_VISITOR_H
 
-#include <string>
+#include <cstring>
 #include "../compiler/glsl/ir.h"
 #include "../compiler/glsl/ir_visitor.h"
 #include "../mesa/program/symbol_table.h"
