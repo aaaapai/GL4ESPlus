@@ -205,7 +205,7 @@ LOCAL_CFLAGS            += -D__STDC_FORMAT_MACROS
 LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
 LOCAL_CFLAGS            += -DUNIX
-LOCAL_CPPFLAGS          += -fexceptions
+LOCAL_CPPFLAGS          += -fno-exceptions -fno-rtti
 include $(BUILD_SHARED_LIBRARY)
 
 #include $(CLEAR_VARS)
