@@ -20,7 +20,6 @@
 
 #include <cstdio>
 #include <string>
-#include <cstring>
 
 #include "../compiler/glsl/ast.h"
 #include "../compiler/glsl/ir_optimization.h"
