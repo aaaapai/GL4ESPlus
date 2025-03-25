@@ -1,5 +1,6 @@
 #include <inttypes.h>
 #include <string>
+#include <stdexcept>
 #include "ir_print_ir_visitor.h"
 #include "../compiler/glsl_types.h"
 #include "../compiler/glsl/glsl_parser_extras.h"
