@@ -193,19 +193,18 @@ LOCAL_C_INCLUDES        := $(LOCAL_PATH)/gl4esplus/shaderconv/include \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/auxiliary \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/include
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
-LOCAL_LDLIBS            := -ldl -lc++
+LOCAL_LDLIBS            := -ldl -lc++ -fuse-ld=lld -flto=thin -Wl,-plugin-opt=-emulated-tls=0
 LOCAL_CPPFLAGS           = -std=gnu++11
 LOCAL_CFLAGS            += -std=gnu11
 LOCAL_CPP_FEATURES      := exceptions
 LOCAL_CFLAGS            += -D_LIB
 LOCAL_CFLAGS            += -DNOMINMAX
 LOCAL_CFLAGS            += -D_USE_MATH_DEFINES
-LOCAL_CFLAGS            += -D__STDC_NO_THREADS__
 LOCAL_CFLAGS            += -D__STDC_LIMIT_MACROS
 LOCAL_CFLAGS            += -D__STDC_FORMAT_MACROS
 LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
-LOCAL_CFLAGS            += -DUNIX
+LOCAL_CFLAGS            += -DUNIX -DLINUX -DANDROID  -O3 -pipe -integrated-as -mllvm -polly -mllvm -polly-vectorizer=stripmine -mllvm -polly-invariant-load-hoisting -mllvm -polly-run-inliner -mllvm -polly-run-dce -mllvm -polly-invariant-load-hoisting -flto=thin -mllvm -polly-run-inliner -mllvm -polly-run-dce -mllvm -polly-parallel -mllvm -polly-omp-backend=LLVM -mllvm -polly-scheduling=dynamic -flto=thin -fno-emulated-tls -fwhole-program-vtables -fdata-sections -ffunction-sections -fmerge-all-constants -mllvm -hot-cold-split=true -mllvm -polly-detect-keep-going -mllvm -polly-ast-use-context -march=armv8-a+simd -fvisibility=hidden -Wall -Wextra -Wno-format -Wno-return-type -ferror-limit=0
 include $(BUILD_SHARED_LIBRARY)
 
 #include $(CLEAR_VARS)
