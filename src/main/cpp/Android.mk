@@ -193,7 +193,7 @@ LOCAL_C_INCLUDES        := $(LOCAL_PATH)/gl4esplus/shaderconv/include \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/auxiliary \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/include
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
-LOCAL_LDLIBS            := -ldl -lc++ -fuse-ld=lld -flto=thin -Wl,-plugin-opt=-emulated-tls=0
+LOCAL_LDLIBS            := -ldl -lc++_static -lc++abi -fuse-ld=lld -flto=thin -Wl,-plugin-opt=-emulated-tls=0
 LOCAL_CPPFLAGS           = -std=gnu++11
 LOCAL_CFLAGS            += -std=gnu11
 LOCAL_CPP_FEATURES      := exceptions
