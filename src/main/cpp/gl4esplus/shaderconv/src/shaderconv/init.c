@@ -56,7 +56,7 @@ void *open_lib_shaderconv(const char **names, const char *override) {
 
 void MesaConverterInit() {
     const char *glslconv_name[] = {"libltw", NULL};
-    void* glslconv = open_lib_shaderconv(glslconv_name, "libltw");
+    void* glslconv = dlopen("libltw.so", RTLD_LOCAL | RTLD_LAZY);
     if (glslconv == NULL) {
         printf("libltw not found\n");
     }
