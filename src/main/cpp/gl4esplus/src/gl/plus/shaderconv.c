@@ -82,7 +82,7 @@ char * Convert(struct shader_s * glshader) {
     DBG(printf("use plus.\n");)
     PreConvert();
 
-    char * result = MesaConvertShader(glshader->source, glshader->type == GL_VERTEX_SHADER ? 35633 : 35632, 460LL, 320);
+    char * result = MesaConvertShader(glshader->source, glshader->type, 460, 320);
     DBG(printf("result shader:\n%s\n", result);)
 
     return result;
