@@ -1,6 +1,6 @@
 name: Android CI
 
-on: [workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -11,12 +11,11 @@ jobs:
 
     - name: Build with CI build script
       run: |
-           cd build/android
-           $ANDROID_NDK_LATEST_HOME/ndk-build -j4 APP_PLATFORM=android-24 APP_BUILD_SCRIPT=./jni/Android.mk NDK_APPLICATION_MK=./jni/Application.mk NDK_PROJECT_PATH=.
+           $ANDROID_NDK_LATEST_HOME/ndk-build -j4 APP_PLATFORM=android-24 APP_BUILD_SCRIPT=./src/main/cpp/Android.mk NDK_APPLICATION_MK=./src/main/cpp/Application.mk NDK_PROJECT_PATH=.
            $ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip libs/*/libgl4es_plus.so
 
     - name: Upload build output
       uses: actions/upload-artifact@main
       with:
         name: gl4esplus
-        path: build/android/libs
+        path: libs
