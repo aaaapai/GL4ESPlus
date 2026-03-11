@@ -194,9 +194,9 @@ LOCAL_C_INCLUDES        := $(LOCAL_PATH)/gl4esplus/shaderconv/include \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/auxiliary \
                            $(LOCAL_PATH)/gl4esplus/shaderconv/src/gallium/include
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
-LOCAL_LDLIBS            := -ldl -lc++abi -lc++_static
+LOCAL_LDLIBS            := -ldl -lc++abi -lc++_static -lc
 LOCAL_CPP_FEATURES      := exceptions
-LOCAL_CPPFLAGS           = -std=gnu++23
+LOCAL_CPPFLAGS           = -std=gnu++20
 LOCAL_CFLAGS            += -std=gnu2x
 LOCAL_CFLAGS            += -D_LIB
 LOCAL_CFLAGS            += -DNOMINMAX
@@ -206,7 +206,7 @@ LOCAL_CFLAGS            += -D__STDC_LIMIT_MACROS
 LOCAL_CFLAGS            += -D__STDC_FORMAT_MACROS
 LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
-LOCAL_CFLAGS            += -DUNIX -DLINUX -DANDROID -DHAVE_GLES3 -DHAVE_GLES2 -DHAVE_OPENGL
+LOCAL_CFLAGS            += -DUNIX
 include $(BUILD_SHARED_LIBRARY)
 
 # include $(CLEAR_VARS)
@@ -298,12 +298,12 @@ LOCAL_SRC_FILES         := gl4esplus/src/gl/arbconverter.c \
                            gl4esplus/src/gl/plus/shaderconv.c
 LOCAL_C_INCLUDES        := $(LOCAL_PATH)/gl4esplus/include
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES) -DBCMHOST
-LOCAL_CFLAGS            += -g -std=gnu11 -funwind-tables -O3 -fvisibility=hidden -mllvm -polly -flto -include gl4esplus/include/android_debug.h
+LOCAL_CFLAGS            += -g -std=gnu17 -funwind-tables -O3 -fvisibility=hidden -mllvm -polly -flto -include gl4esplus/include/android_debug.h
 LOCAL_CFLAGS            += -DNOX11
 LOCAL_CFLAGS            += -DNO_GBM
 LOCAL_CFLAGS            += -DDEFAULT_ES=3
 # LOCAL_CFLAGS            += -DDEBUG
-LOCAL_LDLIBS            := -ldl -llog
+LOCAL_LDLIBS            := -ldl -llog -lc -lc++_static -lc++abi
 LOCAL_LDFALGS           += -flto
 include $(BUILD_SHARED_LIBRARY)
 endif
