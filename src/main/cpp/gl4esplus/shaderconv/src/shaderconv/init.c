@@ -28,7 +28,7 @@ static const char *lib_ext[] = {
         NULL,
 };
 
-void *open_lib(const char **names, const char *override) {
+void *open_lib_shaderconv(const char **names, const char *override) {
     void *lib = NULL;
 
     char path_name[PATH_MAX + 1];
@@ -56,7 +56,7 @@ void *open_lib(const char **names, const char *override) {
 
 void MesaConverterInit() {
     const char *glslconv_name[] = {"libltw", NULL};
-    void* glslconv = open_lib(glslconv_name, "libltw");
+    void* glslconv = open_lib_shaderconv(glslconv_name, "libltw");
     if (glslconv == NULL) {
         printf("libltw not found\n");
     }
