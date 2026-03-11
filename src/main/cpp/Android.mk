@@ -206,13 +206,13 @@ LOCAL_CFLAGS            += -D__STDC_LIMIT_MACROS
 LOCAL_CFLAGS            += -D__STDC_FORMAT_MACROS
 LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
-LOCAL_CFLAGS            += -DUNIX
-include $(BUILD_SHARED_LIBRARY)
+LOCAL_CFLAGS            += -DUNIX -DLINUX -DANDROID -DHAVE_GLES3 -DHAVE_GLES2 -DHAVE_OPENGL
+include $(BUILD_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE            := spirv-cross
-LOCAL_SRC_FILES         := gl4esplus/spirv-cross/libs/$(TARGET_ARCH_ABI)/libspirv-cross-c-shared.so
-include $(PREBUILT_SHARED_LIBRARY)
+# include $(CLEAR_VARS)
+# LOCAL_MODULE            := spirv-cross
+# LOCAL_SRC_FILES         := gl4esplus/spirv-cross/libs/$(TARGET_ARCH_ABI)/libspirv-cross-c-shared.so
+# include $(PREBUILT_SHARED_LIBRARY)
 
 # include $(CLEAR_VARS)
 # LOCAL_MODULE            := shaderc
@@ -221,7 +221,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := gl4es_plus
-LOCAL_SHARED_LIBRARIES  := shaderconv #shaderc
+LOCAL_STATIC_LIBRARIES  := shaderconv
 LOCAL_SRC_FILES         := gl4esplus/src/gl/arbconverter.c \
                            gl4esplus/src/gl/arbgenerator.c \
                            gl4esplus/src/gl/arbhelper.c \
