@@ -15,8 +15,8 @@
 #include "../string_utils.h"
 #include "../shader.h"
 #include "../shaderconv.h"
-#include "../../../shaderconv/src/shaderconv/shaderconv.h"
 
+extern char *optimize_shader(char *source, GLenum type, int vGLSLVersion, int vTargetGLSLVersion);
 //#define DEBUG
 #ifdef DEBUG
 #define DBG(a) a
@@ -82,7 +82,7 @@ char * Convert(struct shader_s * glshader) {
     DBG(printf("use plus.\n");)
     PreConvert();
 
-    char * result = MesaConvertShader(glshader->source, glshader->type, 460, 320);
+    char * result = optimize_shader(glshader->source, glshader->type, 460, 320);
     DBG(printf("result shader:\n%s\n", result);)
 
     return result;
