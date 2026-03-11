@@ -49,7 +49,7 @@ LOCAL_PATH := $(call my-dir)
 #include $(BUILD_SHARED_LIBRARY)
 ##endif
 
-ifeq ($(TARGET_ARCH_ABI), arm64-v8a)
+ifeq ($(TARGET_ARCH_ABI), x86)
 include $(CLEAR_VARS)
 LOCAL_MODULE            := shaderconv
 LOCAL_SRC_FILES         := gl4esplus/shaderconv/src/shaderconv/shaderconv.c \
@@ -209,10 +209,10 @@ LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
 LOCAL_CFLAGS            += -DUNIX
 include $(BUILD_SHARED_LIBRARY)
 
-# include $(CLEAR_VARS)
-# LOCAL_MODULE            := spirv-cross
-# LOCAL_SRC_FILES         := gl4esplus/spirv-cross/libs/$(TARGET_ARCH_ABI)/libspirv-cross-c-shared.so
-# include $(PREBUILT_SHARED_LIBRARY)
+include $(CLEAR_VARS)
+LOCAL_MODULE            := ltw
+LOCAL_SRC_FILES         := gl4esplus/ltw/$(TARGET_ARCH_ABI)/libltw.so
+include $(PREBUILT_SHARED_LIBRARY)
 
 # include $(CLEAR_VARS)
 # LOCAL_MODULE            := shaderc
@@ -221,7 +221,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := gl4es_plus
-LOCAL_SHARED_LIBRARIES  := shaderconv
+LOCAL_SHARED_LIBRARIES  := ltw
 LOCAL_SRC_FILES         := gl4esplus/src/gl/arbconverter.c \
                            gl4esplus/src/gl/arbgenerator.c \
                            gl4esplus/src/gl/arbhelper.c \
