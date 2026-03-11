@@ -302,7 +302,7 @@ LOCAL_CFLAGS            += -g -std=gnu11 -funwind-tables -O3 -fvisibility=hidden
 LOCAL_CFLAGS            += -DNOX11
 LOCAL_CFLAGS            += -DNO_GBM
 LOCAL_CFLAGS            += -DDEFAULT_ES=3
-LOCAL_CFLAGS            += -DDEBUG
+# LOCAL_CFLAGS            += -DDEBUG
 LOCAL_LDLIBS            := -ldl -llog
 LOCAL_LDFALGS           += -flto
 include $(BUILD_SHARED_LIBRARY)
