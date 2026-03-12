@@ -11,7 +11,7 @@ jobs:
 
     - name: Build with CI build script
       run: |
-           $ANDROID_NDK_LATEST_HOME/ndk-build -j4 APP_PLATFORM=android-24 APP_BUILD_SCRIPT=./src/main/cpp/Android.mk NDK_APPLICATION_MK=./src/main/cpp/Application.mk NDK_PROJECT_PATH=.
+           $ANDROID_NDK_LATEST_HOME/ndk-build -j4 APP_ABI=arm64-v8a APP_PLATFORM=android-24 APP_BUILD_SCRIPT=./src/main/cpp/Android.mk NDK_APPLICATION_MK=./src/main/cpp/Application.mk NDK_PROJECT_PATH=.
            $ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip libs/*/libgl4es_plus.so
 
     - name: Upload build output
