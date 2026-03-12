@@ -299,12 +299,12 @@ LOCAL_SRC_FILES         := gl4esplus/src/gl/arbconverter.c \
                            gl4esplus/src/gl/plus/shaderconv.c
 LOCAL_C_INCLUDES        := $(LOCAL_PATH)/gl4esplus/include
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES) -DBCMHOST
-LOCAL_CFLAGS            += -g -std=gnu17 -funwind-tables -O3 -fvisibility=hidden -mllvm -polly -flto -include gl4esplus/include/android_debug.h
+LOCAL_CFLAGS            += -g -std=gnu11 -funwind-tables -O3 -fvisibility=hidden -mllvm -polly -flto -include gl4esplus/include/android_debug.h
 LOCAL_CFLAGS            += -DNOX11
 LOCAL_CFLAGS            += -DNO_GBM
 LOCAL_CFLAGS            += -DDEFAULT_ES=3
 # LOCAL_CFLAGS            += -DDEBUG
-LOCAL_LDLIBS            := -ldl -llog -lc -lc++_static -lc++abi
+LOCAL_LDLIBS            := -ldl -llog -lc
 LOCAL_LDFALGS           += -flto
 include $(BUILD_SHARED_LIBRARY)
 
