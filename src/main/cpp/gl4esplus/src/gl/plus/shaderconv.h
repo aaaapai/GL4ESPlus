@@ -7,7 +7,7 @@
 
 #include "../shader.h"
 
-char * conv(char * source, int type);
+//char * conv(char * source, int type);
 
 char * ConvertShaderPlus(struct shader_s * glshader);
 
