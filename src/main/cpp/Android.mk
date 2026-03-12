@@ -213,7 +213,7 @@ endif
 include $(CLEAR_VARS)
 LOCAL_MODULE            := ltw
 LOCAL_SRC_FILES         := gl4esplus/ltw/$(TARGET_ARCH_ABI)/libltw.a
-include $(PREBUILT_SHARED_LIBRARY)
+include $(PREBUILT_STATIC_LIBRARY)
 
 # include $(CLEAR_VARS)
 # LOCAL_MODULE            := shaderc
@@ -222,7 +222,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := gl4es_plus
-LOCAL_SHARED_LIBRARIES  := ltw
+LOCAL_STATIC_LIBRARIES  := ltw
 LOCAL_SRC_FILES         := gl4esplus/src/gl/arbconverter.c \
                            gl4esplus/src/gl/arbgenerator.c \
                            gl4esplus/src/gl/arbhelper.c \
