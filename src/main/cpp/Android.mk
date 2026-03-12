@@ -208,6 +208,7 @@ LOCAL_CFLAGS            += -D__STDC_CONSTANT_MACROS
 LOCAL_CFLAGS            += -DUTIL_ARCH_LITTLE_ENDIAN
 LOCAL_CFLAGS            += -DUNIX
 include $(BUILD_SHARED_LIBRARY)
+endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := ltw
@@ -306,7 +307,6 @@ LOCAL_CFLAGS            += -DDEFAULT_ES=3
 LOCAL_LDLIBS            := -ldl -llog -lc -lc++_static -lc++abi
 LOCAL_LDFALGS           += -flto
 include $(BUILD_SHARED_LIBRARY)
-endif
 
 #include $(CLEAR_VARS)
 #LOCAL_MODULE            := awt_headless
