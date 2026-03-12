@@ -61,9 +61,9 @@ unsigned int getType(int a1)
     return v2;
 }
 
-char * conv(char * source, int type) {
-    return MesaConvertShader(source, type, 460, 320);
-}
+/*char * conv(char * source, int type) {
+    return optimize_shader(source, type, 460, 320);
+}*/
 
 static char* g_convert_result = NULL;
 static size_t g_convert_length = 0;
