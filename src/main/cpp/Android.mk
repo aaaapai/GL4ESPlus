@@ -212,7 +212,7 @@ endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := ltw
-LOCAL_SRC_FILES         := gl4esplus/ltw/$(TARGET_ARCH_ABI)/libltw.so
+LOCAL_SRC_FILES         := gl4esplus/ltw/$(TARGET_ARCH_ABI)/libltw.a
 include $(PREBUILT_SHARED_LIBRARY)
 
 # include $(CLEAR_VARS)
